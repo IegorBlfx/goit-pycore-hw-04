@@ -1,19 +1,19 @@
-def total_salary(path):
+def total_salary(path): # Function to calculate total and average salary from a file
     total = 0
     count = 0
     try:
-        with open(path, "r", encoding="utf-8") as file:
+        with open(path, "r", encoding="utf-8") as file: # Open file with UTF-8 encoding
             for line in file:
-                line = line.strip()
+                line = line.strip()   # Remove leading/trailing whitespace
                 if not line:
                     continue
                 try:
-                    _, salary = line.split(",")
+                    _, salary = line.split(",") # Split line into name and salary
                     total += float(salary)
                     count += 1
                 except ValueError:
                     print(f"Пропущено некоректний рядок: {line}")
-    except FileNotFoundError:
+    except FileNotFoundError:  # Handle file not found error
         print(f"Файл не знайдено: {path}")
         return 0, 0
 
